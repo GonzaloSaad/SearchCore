@@ -57,7 +57,7 @@ public class PostEntry implements Serializable {
     }
 
     public Set<PostItem> getListOfDocument() {
-        Set<PostItem> set = new TreeSet(new PostItemComparator());
+        Set<PostItem> set = new TreeSet<>(new PostItemComparator());
         
         for (Integer l : getMap().keySet()) {
             PostItem pi = new PostItem(l, getMap().get(l));

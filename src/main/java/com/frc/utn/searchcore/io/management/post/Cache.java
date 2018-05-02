@@ -28,12 +28,13 @@ public class Cache {
 
         for (CachedPostPack c: cache){
             if (c !=null && c.getFile() == file){
-                logger.log(Level.INFO,"File [{0}] in cache.",file);
+                //logger.log(Level.INFO,"File [{0}] in cache.",file);
                 c.markUsed();
+                c.markModified();
                 return c.getPostPack();
             }
         }
-        logger.log(Level.INFO,"File [{0}] not in cache.",file);
+        //logger.log(Level.INFO,"File [{0}] not in cache.",file);
         return null;
     }
 
@@ -84,12 +85,14 @@ public class Cache {
     }
 
     public void dumpToDisk(){
+        int dumpedFiles = 0;
         for (CachedPostPack c: cache){
-            if (c !=null){
-                logger.log(Level.INFO,"Dumping file [{0}].",c.getFile());
+            if (c !=null && c.wasModified()){
                 dumpToDisk(c);
+                dumpedFiles++;
             }
         }
+        logger.log(Level.INFO,"Dumped files [{0}].",dumpedFiles);
     }
 
     private void dumpToDisk(CachedPostPack cachedPostPack){

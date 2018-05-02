@@ -8,6 +8,7 @@ public class CachedPostPack {
     private int file;
     private Map<String, PostEntry> postPack;
     private boolean used = true;
+    private boolean modified = false;
 
     public CachedPostPack(int file, Map<String, PostEntry> postPack) {
         this.file = file;
@@ -33,5 +34,13 @@ public class CachedPostPack {
 
     public boolean used() {
         return used;
+    }
+
+    public void markModified() {
+        modified = true;
+    }
+
+    public boolean wasModified(){
+        return modified;
     }
 }

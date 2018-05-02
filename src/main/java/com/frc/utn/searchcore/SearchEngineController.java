@@ -20,6 +20,8 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +32,8 @@ import java.util.logging.Logger;
  */
 public class SearchEngineController {
 
+    private int indexedTerms =0;
+    private static final int LIMIT_WITHOUT_SAVE = 100000;
     private SearchEngineModel searchModel;
     private static final Logger logger = Logger.getLogger(SearchEngineController.class.getSimpleName());
 
@@ -57,11 +61,23 @@ public class SearchEngineController {
     }
 
     public void indexFolder(String path) throws FileNotFoundException {
+        indexedTerms = 0;
         logger.log(Level.INFO, "Starting indexing.");
         FolderFileList fl = new FolderFileList(path);
         for (File f : fl) {
+
+            logger.log(Level.INFO, "Document to ingest: [{0}]", f.getName());
+            Instant start = Instant.now();
             indexFile(f);
+            Instant end = Instant.now();
+            long nanoseconds = Duration.between(start,end).getNano();
+            if (nanoseconds==0){
+                nanoseconds=1;
+            }
+            long fileSize = f.length();
+            logger.log(Level.INFO,"Size: {0}KB\tTime: {1}ms\tSpeed: {2} KB/s",new Object[]{fileSize/1000, nanoseconds/1000000, (fileSize*1000000/nanoseconds)});
         }
+        logger.log(Level.INFO,"Terms red [{0}].",indexedTerms);
         commitAllChanges();
 
     }
@@ -71,11 +87,13 @@ public class SearchEngineController {
         persistSEQ();
         persistDocMap();
         searchModel.finish();
+        indexedTerms=0;
     }
 
     private void indexFile(File file) throws FileNotFoundException {
 
-        logger.log(Level.INFO, "Document to ingest: [{0}]", file.getName());
+        int termsReaded = 0;
+
         Integer docSEQ = getDocumentSEQ(file);
 
         String text = readAndCleanStopWords(file);
@@ -83,36 +101,46 @@ public class SearchEngineController {
         FileParser fp = new FileParser(text);
         for (String term : fp) {
             if (!term.trim().isEmpty()) {
-                logger.log(Level.INFO, "Term to ingest: [{0}]", term);
+                //logger.log(Level.INFO, "Term to ingest: [{0}]", term);
                 PostEntry pe;
                 VocabularyEntry ve = searchModel.getFromVocabulary(term);
-
+                termsReaded++;
+                indexedTerms++;
                 if (ve == null) {
 
                     ve = new VocabularyEntry(term);
                     searchModel.addToVocabulary(ve);
-                    logger.log(Level.INFO, "Term [{0}] did not exist. Created VocabularyEntry for it.", term);
+                    //logger.log(Level.INFO, "Term [{0}] did not exist. Created VocabularyEntry for it.", term);
 
                     pe = new PostEntry(term);
                     pe.addDocument(docSEQ);
-                    logger.log(Level.INFO, "PostEntry created.");
+                    //logger.log(Level.INFO, "PostEntry created.");
 
-                    logger.log(Level.INFO, "Persisting new post.");
+                    //logger.log(Level.INFO, "Persisting new post.");
                     searchModel.persistPostEntry(pe);
 
 
                     continue;
                 }
-                logger.log(Level.INFO, "Term [{0}] did exist.", term);
+                //logger.log(Level.INFO, "Term [{0}] did exist.", term);
                 ve.addTermOcurrance();
                 pe = searchModel.getPostEntry(term);
                 boolean documentNotExisted = pe.addDocument(docSEQ);
                 if (documentNotExisted) {
-                    logger.log(Level.INFO, "Document [{0}] did not exist for term [{1}].", new Object[]{file.getName(), term});
+                    //logger.log(Level.INFO, "Document [{0}] did not exist for term [{1}].", new Object[]{file.getName(), term});
                     ve.addDocumentAppearance();
                 }
+
+
             }
+
         }
+
+        logger.log(Level.INFO,"[{0}] terms red for document [{1}].",new Object[]{termsReaded,file.getName()});
+        if (indexedTerms == LIMIT_WITHOUT_SAVE){
+            commitAllChanges();
+        }
+
     }
 
     private int getDocumentSEQ(File file){
