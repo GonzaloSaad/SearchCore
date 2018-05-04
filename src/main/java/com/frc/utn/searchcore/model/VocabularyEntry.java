@@ -14,13 +14,20 @@ import java.io.Serializable;
 public class VocabularyEntry implements Serializable {
 
     private final String TERM;
+    private final int POST_FILE;
     private int TF;
     private int Nr;
 
-    public VocabularyEntry(String term) {
+    public int getPostFile() {
+        return POST_FILE;
+    }
+
+    public VocabularyEntry(String term, int file) {
         TERM = term;
         TF = 1;
         Nr = 1;
+        POST_FILE = file;
+
     }
 
     public String getTerm() {
@@ -41,6 +48,10 @@ public class VocabularyEntry implements Serializable {
 
     public int getNr() {
         return Nr;
+    }
+
+    public void updateNrValue(PostEntry postEntry){
+        this.Nr = postEntry.getNr();
     }
 
 }

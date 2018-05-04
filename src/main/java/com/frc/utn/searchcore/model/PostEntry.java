@@ -13,13 +13,12 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- *
  * @author Gonzalo
  */
 public class PostEntry implements Serializable {
 
     private final String TERM;
-    private final int INITIAL_OCCURRENCE = 1;
+
     private final Map<Integer, Integer> DOC_HASH_MAP;
 
     public PostEntry(String term) {
@@ -35,37 +34,63 @@ public class PostEntry implements Serializable {
         return DOC_HASH_MAP;
     }
 
-    public boolean addDocument(int docID) {
+    public void addDocument(int docID) {
+        addDocument(docID, 1);
+    }
+
+    public void addDocument(int docID, int initialOccurrence) {
 
         if (containsDocument(docID)) {
-            addTermOccuranceToDoc(docID);
-            return false;
+            addTermOccurenceToDoc(docID);
+            return;
         }
-        
-        DOC_HASH_MAP.put(docID, INITIAL_OCCURRENCE);
-        return true;
+        DOC_HASH_MAP.put(docID, initialOccurrence);
+
     }
-    
-    private boolean containsDocument(Integer docID){
-        return DOC_HASH_MAP.get(docID)!=null;
+
+    public Integer getDocumentTF(int docID) {
+        return DOC_HASH_MAP.get(docID);
     }
-    
-    private void addTermOccuranceToDoc(int docID) {
-        int occurance = getMap().get(docID);
-        occurance++;
+
+    private boolean containsDocument(Integer docID) {
+        return DOC_HASH_MAP.get(docID) != null;
+    }
+
+    private void addTermOccurenceToDoc(int docID) {
+        addTermOccurenceToDoc(docID, 1);
+    }
+
+    private void addTermOccurenceToDoc(int docID, int amount) {
+        Integer occurance = getMap().get(docID);
+        occurance += amount;
         getMap().put(docID, occurance);
+    }
+
+    public void mergePostEntry(PostEntry otherPE) {
+        Map<Integer, Integer> otherMap = otherPE.getMap();
+
+        for (int docId : otherMap.keySet()) {
+
+            Integer docTF = getDocumentTF(docId);
+
+            if (docTF == null) {
+                addDocument(docId, otherMap.get(docId));
+                continue;
+            }
+            addTermOccurenceToDoc(docId, otherMap.get(docId));
+        }
     }
 
     public Set<PostItem> getListOfDocument() {
         Set<PostItem> set = new TreeSet<>(new PostItemComparator());
-        
+
         for (Integer l : getMap().keySet()) {
             PostItem pi = new PostItem(l, getMap().get(l));
             set.add(pi);
         }
         return set;
     }
-        
+
     private class PostItem implements Serializable, Comparable<PostItem> {
 
         private final int DOC_ID;
@@ -116,13 +141,17 @@ public class PostEntry implements Serializable {
         }
 
     }
-    
-    private class PostItemComparator implements Comparator<PostItem>{
+
+    private class PostItemComparator implements Comparator<PostItem> {
 
         @Override
         public int compare(PostItem t, PostItem t1) {
             return t.compareTo(t1);
         }
-        
+
+    }
+
+    public int getNr(){
+        return DOC_HASH_MAP.size();
     }
 }

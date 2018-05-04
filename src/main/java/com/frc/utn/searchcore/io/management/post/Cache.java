@@ -12,33 +12,41 @@ public class Cache {
 
     private int pointer;
     private CachedPostPack[] cache;
+    private final int sizeOfCache;
     private static Logger logger = Logger.getLogger(Cache.class.getName());
 
     public Cache(int size){
         cache = new CachedPostPack[size];
         pointer = 0;
+        sizeOfCache = size;
     }
 
     public int size(){
         return cache.length;
     }
 
-    public Map<String,PostEntry> getPostPack(int file){
-
-
+    public int operationSize(){
+        int sum = 0;
         for (CachedPostPack c: cache){
-            if (c !=null && c.getFile() == file){
-                //logger.log(Level.INFO,"File [{0}] in cache.",file);
-                c.markUsed();
-                c.markModified();
-                return c.getPostPack();
+            if (c !=null){
+                sum += c.getPostPack().size();
             }
         }
-        //logger.log(Level.INFO,"File [{0}] not in cache.",file);
-        return null;
+        return sum;
     }
 
-    public int getLessUsedPostPackIndex(){
+    public Map<String,PostEntry> getPostPack(int file){
+        CachedPostPack c = cache[file];
+
+        if (c == null){
+            return null;
+        }
+
+        c.markModified();
+        return c.getPostPack();
+    }
+
+    /*public int getLessUsedPostPackIndex(){
 
         int index = pointer;
 
@@ -54,19 +62,15 @@ public class Cache {
             index = (index+1) % size();
 
         } while (true);
-    }
+    }*/
 
     public Map<String,PostEntry> putPostPack(Map<String,PostEntry> postPack, int file){
-        int index = getLessUsedPostPackIndex();
 
-
-        CachedPostPack out = cache[index];
+        CachedPostPack out = cache[file];
         CachedPostPack cpp = new CachedPostPack(file,postPack);
-        cache[index] = cpp;
-
+        cache[file] = cpp;
 
         if (out !=null){
-            dumpToDisk(out);
             return out.getPostPack();
         }
         return null;
@@ -84,19 +88,56 @@ public class Cache {
         return list;
     }
 
-    public void dumpToDisk(){
-        int dumpedFiles = 0;
-        for (CachedPostPack c: cache){
-            if (c !=null && c.wasModified()){
-                dumpToDisk(c);
-                dumpedFiles++;
-            }
-        }
-        logger.log(Level.INFO,"Dumped files [{0}].",dumpedFiles);
-    }
 
     private void dumpToDisk(CachedPostPack cachedPostPack){
         PostPackManagement.getInstance().savePostPack(cachedPostPack.getPostPack(),cachedPostPack.getFile());
     }
+
+    public void dump(){
+        mergePostPacks();
+        clean();
+    }
+
+    public void clean(){
+        cache = new CachedPostPack[sizeOfCache];
+    }
+
+    private void mergePostPacks(){
+        int merged = 0;
+        for (int i = 0; i<cache.length; i++){
+            CachedPostPack cachedPostPack = cache[i];
+            if(cachedPostPack == null || !cachedPostPack.wasModified()){
+                continue;
+            }
+            merged++;
+            Map<String,PostEntry> postPack = cachedPostPack.getPostPack();
+            int file = cachedPostPack.getFile();
+
+            Map<String,PostEntry> diskPostPack = PostPackManagement.getInstance().getPostPack(i);
+            if (diskPostPack==null || diskPostPack.size() ==0){
+                PostPackManagement.getInstance().savePostPack(postPack,i);
+                continue;
+            }
+
+            for (String key: postPack.keySet()){
+                PostEntry dpe = diskPostPack.get(key);
+                PostEntry cpe = postPack.get(key);
+
+                if (dpe == null){
+                    diskPostPack.put(cpe.getTerm(),cpe);
+                    continue;
+                }
+
+                dpe.mergePostEntry(cpe);
+            }
+            PostPackManagement.getInstance().savePostPack(diskPostPack,i);
+
+        }
+        logger.log(Level.INFO,"Merged [{0}] post packs",merged);
+
+
+    }
+
+
 
 }

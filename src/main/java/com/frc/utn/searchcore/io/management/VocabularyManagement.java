@@ -31,12 +31,12 @@ public class VocabularyManagement {
     }
 
     public Map<String, VocabularyEntry> getVocabulary() {
-        DLCObjectReader< Map<String, VocabularyEntry>> or = new DLCObjectReader();
+        DLCObjectReader< Map<String, VocabularyEntry>> or = new DLCObjectReader<>();
         return or.read(VOCABULARY_FILE_PATH);
     }
 
     public void saveVocabulary(Map<String, VocabularyEntry> vocabulary) {
-        DLCObjectWriter< Map<String, VocabularyEntry>> ow = new DLCObjectWriter();
+        DLCObjectWriter< Map<String, VocabularyEntry>> ow = new DLCObjectWriter<>();
         ow.write(vocabulary, VOCABULARY_FILE_PATH);
     }
 

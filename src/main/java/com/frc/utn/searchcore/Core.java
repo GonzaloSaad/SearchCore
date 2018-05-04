@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class Core {
     public static void main(String[] args) {
-        String path = "C:\\Users\\gonzalo.saad\\Desktop\\test";
+        String path = "C:\\Users\\gonzalo.saad\\Desktop\\test3";
         
         /*InputStream stream = Core.class.getResourceAsStream("/logging.properties");
         System.out.println(stream);*/

@@ -28,16 +28,6 @@ public class PostPackManagement{
         return instancePck;
     }
 
-    public Map<String,Integer> getIndex(){
-        DLCObjectReader<Map<String,Integer>> or = new DLCObjectReader<>();
-        return or.read(POST_INDEX_PATH);
-    }
-
-    public void saveIndex(Map<String,Integer> index){
-        DLCObjectWriter<Map<String,Integer>> ow = new DLCObjectWriter<>();
-        ow.write(index,POST_INDEX_PATH);
-    }
-
     public Map<String,PostEntry> getPostPack(int postNumber){
         DLCObjectReader<Map<String,PostEntry>> or = new DLCObjectReader<>();
         return or.read(createPath(postNumber));
