@@ -5,28 +5,35 @@
  */
 package com.frc.utn.searchcore.model;
 
+import java.io.File;
+
 /**
  *
  * @author gonzalo.saad
  */
 public class DocumentResult {
-    private String name;
-    private String url;
-    private String summary;
+    private final int docID;
+    private final String name;
+    private final String url;
 
-    public DocumentResult(String name, String url, String summary) {
+    public DocumentResult(String name, String url, int docID) {
         this.name = name;
         this.url = url;
-        this.summary = summary;
+        this.docID = docID;
+    }
+
+    public DocumentResult(File file, int docID){
+        this(file.getName(),file.getAbsolutePath(),docID);
+    }
+
+    public int getDocID() {
+        return docID;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getSummary() {
-        return summary;
-    }
 
     public String getUrl() {
         return url;

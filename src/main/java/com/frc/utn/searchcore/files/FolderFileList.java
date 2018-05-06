@@ -9,26 +9,25 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.Iterator;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
- *
  * @author Gonzalo
  */
 public class FolderFileList implements Iterable<File> {
 
     FilenameFilter fileFilter = new FilenameFilter() {
-    public boolean accept(File dir, String name) {
-        return name.toLowerCase().endsWith(".txt");
-    }};
-    
+        public boolean accept(File dir, String name) {
+            return name.toLowerCase().endsWith(".txt");
+        }
+    };
+
     private final ArrayList<File> FOLDER_FILE_LIST;
 
     public FolderFileList(String path) {
         this(new File(path));
     }
-    
-    public FolderFileList(File folder){
+
+    public FolderFileList(File folder) {
         FOLDER_FILE_LIST = listFilesForFolder(folder);
     }
 

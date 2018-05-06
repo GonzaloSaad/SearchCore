@@ -1,8 +1,7 @@
-package com.frc.utn.searchcore.io.post;
+package com.frc.utn.searchcore.io.cache;
 
 import com.frc.utn.searchcore.io.management.PostPackManagement;
 import com.frc.utn.searchcore.model.PostEntry;
-
 import java.util.Map;
 
 public class IntermediateCache extends Cache {
@@ -19,7 +18,6 @@ public class IntermediateCache extends Cache {
             return null;
         }
 
-        c.markModified();
         return c.getPostPack();
     }
 
@@ -65,7 +63,7 @@ public class IntermediateCache extends Cache {
 
                 CachedPostPack cachedPostPack = threadCache[i];
 
-                if (cachedPostPack == null || !cachedPostPack.wasModified()) {
+                if (cachedPostPack == null) {
                     continue;
                 }
                 Map<String, PostEntry> postPack = cachedPostPack.getPostPack();

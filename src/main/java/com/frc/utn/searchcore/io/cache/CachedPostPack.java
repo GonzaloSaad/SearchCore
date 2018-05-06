@@ -1,4 +1,4 @@
-package com.frc.utn.searchcore.io.post;
+package com.frc.utn.searchcore.io.cache;
 
 import com.frc.utn.searchcore.model.PostEntry;
 
@@ -8,7 +8,6 @@ public class CachedPostPack {
     private int file;
     private Map<String, PostEntry> postPack;
     private boolean used = true;
-    private boolean modified = false;
 
     public CachedPostPack(int file, Map<String, PostEntry> postPack) {
         this.file = file;
@@ -36,11 +35,4 @@ public class CachedPostPack {
         return used;
     }
 
-    public void markModified() {
-        modified = true;
-    }
-
-    public boolean wasModified(){
-        return modified;
-    }
 }

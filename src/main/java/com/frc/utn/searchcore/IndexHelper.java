@@ -5,11 +5,9 @@
  */
 package com.frc.utn.searchcore;
 
-import com.frc.utn.searchcore.io.management.*;
-import com.frc.utn.searchcore.io.management.post.Cache;
-import com.frc.utn.searchcore.io.management.post.IntermediateCache;
-import com.frc.utn.searchcore.io.management.post.SearchCache;
-import com.frc.utn.searchcore.model.DocumentResult;
+import com.frc.utn.searchcore.io.management.PostPackManagement;
+import com.frc.utn.searchcore.io.cache.Cache;
+import com.frc.utn.searchcore.io.cache.IntermediateCache;
 import com.frc.utn.searchcore.model.PostEntry;
 import com.frc.utn.searchcore.model.VocabularyEntry;
 
@@ -22,16 +20,12 @@ import java.util.logging.Logger;
 /**
  * @author Gonzalo
  */
-public class IndexEngineModel {
+public class IndexHelper {
 
-    private static Logger logger = Logger.getLogger(IndexEngineModel.class.getName());
-
-
-
+    private static Logger logger = Logger.getLogger(IndexHelper.class.getName());
     private Cache cache;
 
-
-    public IndexEngineModel() {
+    public IndexHelper() {
         startCache();
     }
 
@@ -39,40 +33,18 @@ public class IndexEngineModel {
         cache = new IntermediateCache(DLCConstants.INDEX_CACHE_SIZE);
     }
 
-    public int getDocumentID(File file) {
-        Integer docID = EngineModel.getInstance().getFromDocMap(file);
-        if (docID == null) {
-            docID = getNextID();
-            addToDocMap(file, docID);
-            logger.log(Level.INFO, "Document [{0}] did not exist. Created entry with [{1}] sequence number.", new Object[]{file.getName(), docID});
-        } else {
-            logger.log(Level.INFO, "Document [{0}] did exist, with [{1}] sequence number.", new Object[]{file.getName(), docID});
-        }
-        return docID;
+    private int getNextFileIndex() {
+        return (EngineModel.getInstance().getVocabulary().size() % DLCConstants.POST_FILES);
     }
 
-
-    public int getNextID() {
-        return getDocMap().size();
-    }
-
-    public void savePostEntry(PostEntry pe) {
-        String term = pe.getTerm();
-        int file = getFromVocabulary(term).getPostFile();
-
-        Map<String, PostEntry> postPack = getPostPack(file);
-
-        if (postPack != null) {
-            postPack.put(term, pe);
-        } else {
-            throw new RuntimeException("Error in cache.");
-        }
+    private int getNextDocumentID() {
+        return EngineModel.getInstance().getDocMap().size();
     }
 
     public PostEntry getPostEntry(String term) {
         PostEntry pe = null;
 
-        int file = getFromVocabulary(term).getPostFile();
+        int file = EngineModel.getInstance().getFromVocabulary(term).getPostFile();
 
         Map<String, PostEntry> postPack = getPostPack(file);
 
@@ -87,38 +59,59 @@ public class IndexEngineModel {
         return pe;
     }
 
+    public VocabularyEntry getVocabularyEntryForTerm(String term) {
+
+        VocabularyEntry ve = EngineModel.getInstance().getFromVocabulary(term);
+
+        if (ve == null) {
+            int postFile = getNextFileIndex();
+            ve = new VocabularyEntry(term, postFile);
+            EngineModel.getInstance().addToVocabulary(ve);
+        }
+
+        return ve;
+    }
+
+    public int getDocumentID(File file) {
+        Integer docID = EngineModel.getInstance().getFromDocMap(file);
+        if (docID == null) {
+            docID = getNextDocumentID();
+            EngineModel.getInstance().addToDocMap(file, docID);
+            logger.log(Level.INFO, "Document [{0}] did not exist. Created entry with [{1}] sequence number.", new Object[]{file.getName(), docID});
+        } else {
+            logger.log(Level.INFO, "Document [{0}] did exist, with [{1}] sequence number.", new Object[]{file.getName(), docID});
+        }
+        return docID;
+    }
+
     private Map<String, PostEntry> getPostPack(int file) {
         Map<String, PostEntry> postPack = cache.getPostPack(file);
 
         if (postPack == null) {
             postPack = new HashMap<>();
-            intercache.putPostPack(postPack, file);
+            cache.putPostPack(postPack, file);
         }
         return postPack;
     }
 
-    public void dump() {
-        logger.log(Level.INFO, "Saving index and cache to storage.");
-        persistDocMap();
-        persistVocabulary();
+    public void commit() {
+        logger.log(Level.INFO, "Saving indexes and cache to storage.");
         cache.dump();
-
+        EngineModel.getInstance().commit();
     }
-
-
-    }
-
-
-
-
 
     public void finishIndexing() {
-        for (VocabularyEntry ve: VOCABULARY.values()){
+        logger.log(Level.INFO, "Finalize indexing...");
 
+        cache.dump();
+        for (int i = 0; i < DLCConstants.POST_FILES; i++) {
+            Map<String,PostEntry> postPack = PostPackManagement.getInstance().getPostPack(i);
+            if (postPack != null){
+                throw new RuntimeException("The model was not consistent.");
+            }
         }
+
     }
-
-
 
 
 }

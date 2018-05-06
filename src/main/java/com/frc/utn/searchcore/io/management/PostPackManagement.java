@@ -1,4 +1,4 @@
-package com.frc.utn.searchcore.io.management.post;
+package com.frc.utn.searchcore.io.management;
 
 
 import com.frc.utn.searchcore.io.util.DLCObjectReader;
@@ -11,9 +11,8 @@ import java.util.Map;
 public class PostPackManagement{
 
 
-    public static final String POST_FOLDER_PATH = "src/main/resources/dlc/post/save/post";
+    public static final String POST_FOLDER_PATH = "src/main/resources/dlc/post/post";
     public static final String POST_FILE_EXTENSION = ".post";
-    public static final String POST_INDEX_PATH = "src/main/resources/dlc/post/post.index";
 
     private static PostPackManagement instancePck;
 

@@ -1,7 +1,6 @@
-package com.frc.utn.searchcore.io.post;
+package com.frc.utn.searchcore.io.cache;
 
 
-import com.frc.utn.searchcore.io.management.PostPackManagement;
 import com.frc.utn.searchcore.model.PostEntry;
 
 import java.util.ArrayList;
@@ -26,24 +25,20 @@ public abstract class Cache {
 
     public abstract void dump();
 
-    protected CachedPostPack[] getCache(){
+    protected CachedPostPack[] getCache() {
         return cache;
     }
 
-    protected CachedPostPack get(int index){
+    protected CachedPostPack get(int index) {
         return cache[index];
     }
 
-    protected void set(CachedPostPack c){
+    protected void set(CachedPostPack c) {
         cache[c.getFile()] = c;
     }
 
     public void clean() {
         cache = new CachedPostPack[sizeOfCache];
-    }
-
-    private void dumpToDisk(CachedPostPack cachedPostPack) {
-        PostPackManagement.getInstance().savePostPack(cachedPostPack.getPostPack(), cachedPostPack.getFile());
     }
 
     public List<Map<String, PostEntry>> getCachedPost() {
@@ -58,16 +53,9 @@ public abstract class Cache {
         return list;
     }
 
-    public int size(){
+    public int size() {
         return cache.length;
     }
-
-
-
-
-
-
-
 
 
 }

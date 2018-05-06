@@ -115,7 +115,7 @@ public class PostEntry implements Serializable {
 
         @Override
         public int compareTo(PostItem t) {
-            return getTf() - t.getTf();
+            return (getTf() - t.getTf())<0? -1 : 1;
         }
 
         @Override

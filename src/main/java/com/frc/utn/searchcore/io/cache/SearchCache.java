@@ -1,10 +1,8 @@
-package com.frc.utn.searchcore.io.post;
+package com.frc.utn.searchcore.io.cache;
 
 import com.frc.utn.searchcore.DLCConstants;
 import com.frc.utn.searchcore.io.management.PostPackManagement;
 import com.frc.utn.searchcore.model.PostEntry;
-
-
 import java.util.Arrays;
 import java.util.Map;
 
@@ -24,6 +22,13 @@ public class SearchCache extends Cache {
         return cacheMap[file];
     }
 
+    private void setInCache(int file){
+        cacheMap[file] = true;
+    }
+
+    private void setOutOfCache(int file){
+        cacheMap[file] = false;
+    }
 
     public Map<String, PostEntry> getPostPack(int file) {
         CachedPostPack cpp;
@@ -38,13 +43,13 @@ public class SearchCache extends Cache {
         spp = getPostPackFromStorage(file);
         int index = getLessUsedPostPackIndex();
 
-        /*if (c == null) {
-            return null;
+        if (get(index) != null){
+            setOutOfCache(get(index).getFile());
         }
 
-        c.markModified();
-        return c.getPostPack();*/
-        return null;
+        set(spp);
+        setInCache(file);
+        return spp.getPostPack();
     }
 
     private CachedPostPack getPostPackFromStorage(int file) {
@@ -74,11 +79,9 @@ public class SearchCache extends Cache {
         } while (true);
     }
 
-
     public Map<String, PostEntry> putPostPack(Map<String, PostEntry> postPack, int file) {
         throw new UnsupportedOperationException("Search Cache cant add files.");
     }
-
 
     public void dump() {
         clean();

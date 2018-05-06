@@ -9,7 +9,7 @@ package com.frc.utn.searchcore.files;
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
-*/
+ */
 
 import java.io.Closeable;
 import java.io.File;
@@ -20,58 +20,31 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-/**
- *
- * @author a4
- */
-/**
- * La idea de esta clase es aislar el comportamiento del scanner en un archivo.
- *
- */
+
 public class FileParser implements Iterable<String>, Closeable {
 
     Scanner sc;
 
-   
-    /**
-     * Constructor con archivo tipo File.
-     *
-     * @param file - el archivo.
-     * @throws FileNotFoundException - si no encuentra el archivo.
-     */
+
     public FileParser(File file) throws FileNotFoundException {
         sc = new Scanner(file, "ISO-8859-1");
 
     }
-    
-    
-    public FileParser(String text){
-        sc = new Scanner(text);  
+
+    public FileParser(String text) {
+        sc = new Scanner(text);
     }
 
-    /**
-     * "Iterador" del archivo.
-     *
-     * @return - una instancia del iterador.
-     */
     @Override
     public Iterator<String> iterator() {
         return new FileIterator();
     }
 
-    /**
-     * Cierra el scanner para liberar el archivo.
-     *
-     * @throws IOException - depende de scanner
-     */
     @Override
     public void close() throws IOException {
         sc.close();
     }
 
-    /**
-     * Clase iteradora del archivo.
-     */
     private class FileIterator implements Iterator<String> {
 
         @Override
@@ -97,35 +70,19 @@ public class FileParser implements Iterable<String>, Closeable {
 
     }
 
-    /**
-     * Elimina los acentos de un string.     * 
-     *
-     * @param s - string a limpiar.
-     * @return - el string sin acentos.
-     */
+
     public static String stripAccents(String s) {
         s = Normalizer.normalize(s, Normalizer.Form.NFD);
         s = s.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
         return s;
     }
 
-    /**
-     * Elimina todo aquello que no sea palabras de
-     * solo letras.
-     *
-     * @param s - string a limpiar.
-     * @return - string solamente de letras.
-     */
+
     public static String stripNonAlphabetic(String s) {
         return s.replaceAll("([a-z]+[0-9]+|[0-9]+[a-z]+)[a-z0-9]*\b|[^A-Za-z]+", "");
     }
 
-    /**
-     * Elimina acentos, palabras alfanumericas y puntuacion.
-     *
-     * @param s - string a limpiar.
-     * @return - string limpio.
-     */
+
     public static String cleanString(String s) {
         return stripNonAlphabetic(stripAccents(s));
     }
