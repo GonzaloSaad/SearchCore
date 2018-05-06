@@ -1,4 +1,4 @@
-package com.frc.utn.searchcore.io.management.post;
+package com.frc.utn.searchcore.io.post;
 
 import com.frc.utn.searchcore.model.PostEntry;
 

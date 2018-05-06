@@ -5,7 +5,11 @@
  */
 package com.frc.utn.searchcore;
 
+import com.frc.utn.searchcore.io.management.*;
 import com.frc.utn.searchcore.io.management.post.Cache;
+import com.frc.utn.searchcore.io.management.post.IntermediateCache;
+import com.frc.utn.searchcore.io.management.post.SearchCache;
+import com.frc.utn.searchcore.model.DocumentResult;
 import com.frc.utn.searchcore.model.PostEntry;
 import com.frc.utn.searchcore.model.VocabularyEntry;
 
@@ -18,56 +22,38 @@ import java.util.logging.Logger;
 /**
  * @author Gonzalo
  */
-public class SearchEngineModel {
+public class IndexEngineModel {
 
-    private final Map<String, Integer> DOC_ID_MAP;
-    private final Map<String, VocabularyEntry> VOCABULARY;
-    private static Logger logger = Logger.getLogger(SearchEngineModel.class.getName());
+    private static Logger logger = Logger.getLogger(IndexEngineModel.class.getName());
 
-    private int SEQ;
+
+
     private Cache cache;
 
-    public SearchEngineModel(Map<String, VocabularyEntry> vocabulary, Map<String, Integer> dmap, int seq) {
-        this.VOCABULARY = vocabulary;
-        this.SEQ = seq;
-        this.DOC_ID_MAP = dmap;
-        this.cache = new Cache(DLCConstants.INDEX_CACHE_SIZE);
+
+    public IndexEngineModel() {
+        startCache();
     }
 
-    public SearchEngineModel() {
-        this(new HashMap<>(), new HashMap<>(), 0);
+    private void startCache() {
+        cache = new IntermediateCache(DLCConstants.INDEX_CACHE_SIZE);
     }
 
-    public Map<String, Integer> getDocMap() {
-        return DOC_ID_MAP;
+    public int getDocumentID(File file) {
+        Integer docID = EngineModel.getInstance().getFromDocMap(file);
+        if (docID == null) {
+            docID = getNextID();
+            addToDocMap(file, docID);
+            logger.log(Level.INFO, "Document [{0}] did not exist. Created entry with [{1}] sequence number.", new Object[]{file.getName(), docID});
+        } else {
+            logger.log(Level.INFO, "Document [{0}] did exist, with [{1}] sequence number.", new Object[]{file.getName(), docID});
+        }
+        return docID;
     }
 
-    public Integer getFromDocMap(File file) {
-        return DOC_ID_MAP.get(file.getName());
-    }
 
-    public void addToDocMap(File file, int docSEQ) {
-        DOC_ID_MAP.put(file.getName(), docSEQ);
-    }
-
-    public Map<String, VocabularyEntry> getVocabulary() {
-        return VOCABULARY;
-    }
-
-    public VocabularyEntry getFromVocabulary(String term) {
-        return VOCABULARY.get(term);
-    }
-
-    public void addToVocabulary(VocabularyEntry ve) {
-        VOCABULARY.put(ve.getTerm(), ve);
-    }
-
-    public int getSEQ() {
-        return SEQ;
-    }
-
-    public void incrementSEQ() {
-        SEQ++;
+    public int getNextID() {
+        return getDocMap().size();
     }
 
     public void savePostEntry(PostEntry pe) {
@@ -81,7 +67,6 @@ public class SearchEngineModel {
         } else {
             throw new RuntimeException("Error in cache.");
         }
-
     }
 
     public PostEntry getPostEntry(String term) {
@@ -95,7 +80,7 @@ public class SearchEngineModel {
             pe = postPack.get(term);
             if (pe == null) {
                 pe = new PostEntry(term);
-                postPack.put(term,pe);
+                postPack.put(term, pe);
             }
         }
 
@@ -107,16 +92,33 @@ public class SearchEngineModel {
 
         if (postPack == null) {
             postPack = new HashMap<>();
-            cache.putPostPack(postPack, file);
+            intercache.putPostPack(postPack, file);
         }
         return postPack;
     }
 
     public void dump() {
         logger.log(Level.INFO, "Saving index and cache to storage.");
+        persistDocMap();
+        persistVocabulary();
         cache.dump();
 
     }
+
+
+    }
+
+
+
+
+
+    public void finishIndexing() {
+        for (VocabularyEntry ve: VOCABULARY.values()){
+
+        }
+    }
+
+
 
 
 }
