@@ -2,40 +2,165 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7cad4041-9145-4bb9-8d38-24a8675861ad" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/EngineModel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/SearchHelper.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/Cache.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/IntermediateCache.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/SearchCache.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/Query.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/Core.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/Core.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/DLCConstants.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/DLCConstants.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/IndexHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/IndexHelper.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/SearchEngineController.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/SearchEngineController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/SearchEngineModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/IndexHelper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/StringHasher.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/files/FileParser.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/files/FileParser.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/files/FolderFileList.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/files/FolderFileList.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/DocumentManagement.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/DocumentManagement.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/InternalFoldersManagement.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/InternalFoldersManagement.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/PostManagement.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/SEQManagement.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/VocabularyManagement.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/VocabularyManagement.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/post/Cache.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/post/CachedPostPack.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/CachedPostPack.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/post/PostPackManagement.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/PostPackManagement.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/DocumentResult.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/DocumentResult.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/PostEntry.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/PostEntry.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/Core.class" afterPath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/Core.class" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/Cache.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/Cache.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/IntermediateCache.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/IntermediateCache.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/SearchCache.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/SearchCache.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/VocabularyEntry.java" afterPath="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/VocabularyEntry.java" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/DLCConstants.class" afterPath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/DLCConstants.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/SearchEngineController.class" afterPath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/SearchEngineController.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/SearchEngineModel.class" afterPath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/SearchEngineModel.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/DocumentManagement.class" afterPath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/DocumentManagement.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/InternalFoldersManagement.class" afterPath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/InternalFoldersManagement.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/PostManagement.class" afterPath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/PostManagement.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/SearchEngineModel$DocumentPersistingThread.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/SearchEngineModel.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/StringHasher.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/files/FileParser$FileIterator.class" afterPath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/files/FileParser$FileIterator.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/files/FileParser.class" afterPath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/files/FileParser.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/files/FolderFileList$1.class" afterPath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/files/FolderFileList$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/files/FolderFileList.class" afterPath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/files/FolderFileList.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/PostManagement.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/PostPackManagement.class" afterPath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/PostPackManagement.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/SEQManagement.class" afterPath="" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/VocabularyManagement.class" afterPath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/VocabularyManagement.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/post/Cache.class" afterPath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/post/Cache.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/post/PostPackManagement.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/model/DocumentResult.class" afterPath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/model/DocumentResult.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/post/Cache$PersistentThread.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/post/Cache.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/io/management/post/CachedPostPack.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/model/PostEntry$PostItem.class" afterPath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/model/PostEntry$PostItem.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/model/VocabularyEntry.class" afterPath="$PROJECT_DIR$/target/classes/com/frc/utn/searchcore/model/VocabularyEntry.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc000.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc000.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc001.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc001.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc002.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc002.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc003.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc003.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc004.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc004.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc005.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc005.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc006.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc006.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc007.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc007.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc008.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc008.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc009.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc009.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc010.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc010.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc011.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc011.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc012.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc012.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc013.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc013.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc014.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc014.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc015.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc015.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc016.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc016.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc017.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc017.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc018.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc018.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc019.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc019.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc020.dlc" afterPath="$PROJECT_DIR$/target/classes/dlc/docs/doc020.dlc" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc021.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc022.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc023.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc024.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc025.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc026.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc027.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc028.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc029.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc030.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc031.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc032.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc033.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc034.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc035.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc036.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc037.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc038.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc039.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc040.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc041.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc042.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc043.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc044.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc045.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc046.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc047.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc048.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc049.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc050.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc051.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc052.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc053.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc054.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc055.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc056.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc057.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc058.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc059.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc060.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc061.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc062.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc063.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc064.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc065.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc066.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc067.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc068.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc069.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc070.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc071.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc072.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc073.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc074.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc075.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc076.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc077.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc078.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc079.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc080.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc081.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc082.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc083.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc084.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc085.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc086.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc087.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc088.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc089.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc090.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc091.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc092.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc093.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc094.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc095.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc096.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc097.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc098.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc099.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc100.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc101.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc102.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc103.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc104.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc105.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc106.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc107.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc108.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc109.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc110.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc111.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc112.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc113.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc114.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc115.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc116.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc117.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc118.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc119.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc120.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc121.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc122.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc123.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc124.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc125.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc126.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc127.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc128.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc129.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc130.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/docs/doc131.dlc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dlc/vocabulary.v" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,26 +172,103 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SearchEngineController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SearchEngineController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/SearchEngineController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="28" column="72" lean-forward="true" selection-start-line="28" selection-start-column="72" selection-end-line="28" selection-end-column="72" />
+            <state relative-caret-position="-442">
+              <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IndexHelper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/IndexHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="129" column="52" lean-forward="false" selection-start-line="129" selection-start-column="52" selection-end-line="129" selection-end-column="52" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3368#3369#0" expanded="true" />
-                <element signature="e#3395#3396#0" expanded="true" />
+                <element signature="docComment;class#IndexHelper#0" expanded="false" />
+                <element signature="method#getNextFileIndex#0;class#IndexHelper#0" expanded="false" />
+                <element signature="method#getPostEntry#0;class#IndexHelper#0" expanded="false" />
+                <element signature="method#getVocabularyEntryForTerm#0;class#IndexHelper#0" expanded="false" />
+                <element signature="method#getDocumentID#0;class#IndexHelper#0" expanded="false" />
+                <element signature="method#getPostPack#0;class#IndexHelper#0" expanded="false" />
+                <element signature="method#commit#0;class#IndexHelper#0" expanded="false" />
+                <element signature="method#finishIndexing#0;class#IndexHelper#0" expanded="false" />
+                <element signature="class#UpdatingNrJob#0;class#IndexHelper#0" expanded="false" />
+                <element signature="method#UpdatingNrJob#0;class#UpdatingNrJob#0;class#IndexHelper#0" expanded="false" />
+                <element signature="method#run#0;class#UpdatingNrJob#0;class#IndexHelper#0" expanded="false" />
+                <element signature="method#doUpdate#0;class#UpdatingNrJob#0;class#IndexHelper#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/SearchHelper.java">
+      <file leaf-file-name="Core.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/Core.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="25" lean-forward="false" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-              <folding />
+            <state relative-caret-position="374">
+              <caret line="26" column="39" lean-forward="true" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VocabularyEntry.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/VocabularyEntry.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#VocabularyEntry#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Cache.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/Cache.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="191">
+              <caret line="25" column="20" lean-forward="false" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PostEntry.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/PostEntry.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1292">
+              <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#PostEntry#0" expanded="false" />
+                <element signature="e#2799#2800#0" expanded="true" />
+                <element signature="e#2861#2862#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchCache.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/SearchCache.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+              <folding>
+                <element signature="method#SearchCache#0;class#SearchCache#0" expanded="false" />
+                <element signature="method#getPostPack#0;class#SearchCache#0" expanded="false" />
+                <element signature="method#getPostPackFromStorage#0;class#SearchCache#0" expanded="false" />
+                <element signature="method#getLessUsedPostPackIndex#0;class#SearchCache#0" expanded="false" />
+                <element signature="method#putPostPack#0;class#SearchCache#0" expanded="false" />
+                <element signature="e#2291#2292#0" expanded="true" />
+                <element signature="e#2314#2315#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,7 +319,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/DLCDocument.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/DLCDocument.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/DocumentResult.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/Core.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/DocumentManagement.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/DocumentRanker.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/PostEntry.java" />
@@ -129,20 +330,21 @@
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/IndexEngineModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/EngineModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/post/IntermediateCache.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/VocabularyEntry.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/post/SearchCache.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/post/SearchCache.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/IndexHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/files/FileParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/files/FolderFileList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/Cache.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/CachedPostPack.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/IntermediateCache.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/SearchCache.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/VocabularyManagement.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/PostPackManagement.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/InternalFoldersManagement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/VocabularyEntry.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/SearchEngineController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/Cache.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/SearchCache.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/IntermediateCache.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/Core.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/IndexHelper.java" />
       </list>
     </option>
   </component>
@@ -248,6 +450,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="searchcore" type="462c0819:PsiDirectoryNode" />
               <item name="io" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SearchCore" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SearchCore" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="searchcore" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SearchCore" type="b2602c69:ProjectViewProjectNode" />
@@ -448,16 +659,16 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40865386" sideWeight="0.5021322" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.116178066" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2931596" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19669509" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.105320305" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40716612" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35070574" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" x="0" y="23" width="1920" height="1137" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28555918" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" x="0" y="23" width="1920" height="1137" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -485,12 +696,44 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="63" />
+      <option name="time" value="70" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>InternalFoldersManagement.getInstance().clearAll()</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>com.frc.utn.searchcore.io.management.InternalFoldersManagement</custom-info>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>InternalFoldersManagement.getInstance().clearAll();</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>com.frc.utn.searchcore.io.management.InternalFoldersManagement</custom-info>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>PostPackManagement.getInstance().getPostPack(0).get(&quot;project&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>PostPackManagement.getInstance().getPostPack(0)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>getPostEntry(&quot;project&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>EngineModel.getInstance().getFromVocabulary(&quot;project&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>new File(&quot;src/main/resources/dlc&quot;).exists()</expression-string>
         <language-id>JAVA</language-id>
@@ -513,32 +756,6 @@
         <custom-info>com.frc.utn.searchcore.io.management.post.PostPackManagement</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>PostPackManagement.getInstance().getPostPack(0)</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>com.frc.utn.searchcore.io.management.post.PostPackManagement</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>ve.getPostFile()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>pe.getListOfDocument()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>cpe</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>dpe</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
@@ -546,7 +763,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="14" column="30" lean-forward="false" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -599,8 +818,8 @@
             <element signature="docComment;class#SearchEngineController#0" expanded="false" />
             <element signature="method#readAndCleanStopWords#0;class#SearchEngineController#0" expanded="false" />
             <element signature="method#read#0;class#SearchEngineController#0" expanded="false" />
-            <element signature="e#3368#3369#0" expanded="true" />
-            <element signature="e#3395#3396#0" expanded="true" />
+            <element signature="e#3403#3404#0" expanded="false" />
+            <element signature="e#3430#3431#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -636,6 +855,12 @@
             <element signature="method#getVocabularyEntryForTerm#0;class#IndexHelper#0" expanded="false" />
             <element signature="method#getDocumentID#0;class#IndexHelper#0" expanded="false" />
             <element signature="method#getPostPack#0;class#IndexHelper#0" expanded="false" />
+            <element signature="method#commit#0;class#IndexHelper#0" expanded="false" />
+            <element signature="method#finishIndexing#0;class#IndexHelper#0" expanded="false" />
+            <element signature="class#UpdatingNrJob#0;class#IndexHelper#0" expanded="false" />
+            <element signature="method#UpdatingNrJob#0;class#UpdatingNrJob#0;class#IndexHelper#0" expanded="false" />
+            <element signature="method#run#0;class#UpdatingNrJob#0;class#IndexHelper#0" expanded="false" />
+            <element signature="method#doUpdate#0;class#UpdatingNrJob#0;class#IndexHelper#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -644,7 +869,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="31" column="23" lean-forward="false" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -745,14 +972,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/Core.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="33" column="11" lean-forward="false" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/DocumentRanker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -766,17 +985,6 @@
         <state relative-caret-position="34">
           <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/PostEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="116" column="42" lean-forward="false" selection-start-line="116" selection-start-column="42" selection-end-line="116" selection-end-column="42" />
-          <folding>
-            <element signature="docComment;class#PostEntry#0" expanded="false" />
-            <element signature="e#2861#2862#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -821,48 +1029,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/IndexHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="109" column="73" lean-forward="false" selection-start-line="109" selection-start-column="73" selection-end-line="109" selection-end-column="73" />
-          <folding>
-            <element signature="docComment;class#IndexHelper#0" expanded="false" />
-            <element signature="method#getNextFileIndex#0;class#IndexHelper#0" expanded="false" />
-            <element signature="method#getPostEntry#0;class#IndexHelper#0" expanded="false" />
-            <element signature="method#getVocabularyEntryForTerm#0;class#IndexHelper#0" expanded="false" />
-            <element signature="method#getDocumentID#0;class#IndexHelper#0" expanded="false" />
-            <element signature="method#getPostPack#0;class#IndexHelper#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/EngineModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="105" column="5" lean-forward="true" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
-          <folding>
-            <element signature="method#getInstance#0;class#EngineModel#0" expanded="false" />
-            <element signature="method#EngineModel#0;class#EngineModel#0" expanded="false" />
-            <element signature="method#addToDocMap#0;class#EngineModel#0" expanded="false" />
-            <element signature="method#commit#0;class#EngineModel#0" expanded="false" />
-            <element signature="class#DocumentPersistingThread#0;class#EngineModel#0" expanded="false" />
-            <element signature="method#DocumentPersistingThread#0;class#DocumentPersistingThread#0;class#EngineModel#0" expanded="false" />
-            <element signature="e#3141#3142#0" expanded="true" />
-            <element signature="e#3215#3216#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/VocabularyEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="27" column="14" lean-forward="false" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-          <folding>
-            <element signature="docComment;class#VocabularyEntry#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/DLCConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -876,21 +1042,13 @@
         <state relative-caret-position="119">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="class#452:597" expanded="false" />
-            <element signature="e#524#525#0" expanded="true" />
-            <element signature="e#590#591#0" expanded="true" />
-            <element signature="e#770#771#0" expanded="true" />
-            <element signature="e#831#832#0" expanded="true" />
+            <element signature="e#524#525#0" expanded="false" />
+            <element signature="e#590#591#0" expanded="false" />
+            <element signature="e#770#771#0" expanded="false" />
+            <element signature="e#831#832#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/Cache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="46" lean-forward="true" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -900,34 +1058,6 @@
           <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
           <folding>
             <element signature="method#CachedPostPack#0;class#CachedPostPack#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/IntermediateCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="46" column="50" lean-forward="false" selection-start-line="46" selection-start-column="50" selection-end-line="46" selection-end-column="50" />
-          <folding>
-            <element signature="method#getPostPack#0;class#IntermediateCache#0" expanded="false" />
-            <element signature="method#putPostPack#0;class#IntermediateCache#0" expanded="false" />
-            <element signature="method#dump#0;class#IntermediateCache#0" expanded="false" />
-            <element signature="class#PersistentThread#0;class#IntermediateCache#0" expanded="false" />
-            <element signature="method#doMerge#0;class#PersistentThread#0;class#IntermediateCache#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/SearchCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding>
-            <element signature="method#SearchCache#0;class#SearchCache#0" expanded="false" />
-            <element signature="method#getPostPack#0;class#SearchCache#0" expanded="false" />
-            <element signature="method#getPostPackFromStorage#0;class#SearchCache#0" expanded="false" />
-            <element signature="method#getLessUsedPostPackIndex#0;class#SearchCache#0" expanded="false" />
-            <element signature="method#putPostPack#0;class#SearchCache#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -970,10 +1100,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="21" lean-forward="false" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/VocabularyEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#VocabularyEntry#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/management/PostPackManagement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="13" column="79" lean-forward="false" selection-start-line="13" selection-start-column="79" selection-end-line="13" selection-end-column="79" />
+        <state relative-caret-position="102">
+          <caret line="29" column="33" lean-forward="false" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -986,22 +1134,101 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/EngineModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="21" lean-forward="false" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+        <state relative-caret-position="745">
+          <caret line="72" column="30" lean-forward="false" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/SearchEngineController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="28" column="72" lean-forward="true" selection-start-line="28" selection-start-column="72" selection-end-line="28" selection-end-column="72" />
+        <state relative-caret-position="-442">
+          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/SearchCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+          <folding>
+            <element signature="method#SearchCache#0;class#SearchCache#0" expanded="false" />
+            <element signature="method#getPostPack#0;class#SearchCache#0" expanded="false" />
+            <element signature="method#getPostPackFromStorage#0;class#SearchCache#0" expanded="false" />
+            <element signature="method#getLessUsedPostPackIndex#0;class#SearchCache#0" expanded="false" />
+            <element signature="method#putPostPack#0;class#SearchCache#0" expanded="false" />
+            <element signature="e#2291#2292#0" expanded="true" />
+            <element signature="e#2314#2315#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/IntermediateCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding>
+            <element signature="method#getPostPack#0;class#IntermediateCache#0" expanded="false" />
+            <element signature="method#putPostPack#0;class#IntermediateCache#0" expanded="false" />
+            <element signature="method#dump#0;class#IntermediateCache#0" expanded="false" />
+            <element signature="method#mergePostPacks#0;class#IntermediateCache#0" expanded="false" />
+            <element signature="method#doMerge#0;class#PersistentJob#0;class#IntermediateCache#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/io/cache/Cache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="25" column="20" lean-forward="false" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3368#3369#0" expanded="true" />
-            <element signature="e#3395#3396#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/IndexHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="129" column="52" lean-forward="false" selection-start-line="129" selection-start-column="52" selection-end-line="129" selection-end-column="52" />
+          <folding>
+            <element signature="docComment;class#IndexHelper#0" expanded="false" />
+            <element signature="method#getNextFileIndex#0;class#IndexHelper#0" expanded="false" />
+            <element signature="method#getPostEntry#0;class#IndexHelper#0" expanded="false" />
+            <element signature="method#getVocabularyEntryForTerm#0;class#IndexHelper#0" expanded="false" />
+            <element signature="method#getDocumentID#0;class#IndexHelper#0" expanded="false" />
+            <element signature="method#getPostPack#0;class#IndexHelper#0" expanded="false" />
+            <element signature="method#commit#0;class#IndexHelper#0" expanded="false" />
+            <element signature="method#finishIndexing#0;class#IndexHelper#0" expanded="false" />
+            <element signature="class#UpdatingNrJob#0;class#IndexHelper#0" expanded="false" />
+            <element signature="method#UpdatingNrJob#0;class#UpdatingNrJob#0;class#IndexHelper#0" expanded="false" />
+            <element signature="method#run#0;class#UpdatingNrJob#0;class#IndexHelper#0" expanded="false" />
+            <element signature="method#doUpdate#0;class#UpdatingNrJob#0;class#IndexHelper#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/model/PostEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1292">
+          <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#PostEntry#0" expanded="false" />
+            <element signature="e#2799#2800#0" expanded="true" />
+            <element signature="e#2861#2862#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/frc/utn/searchcore/Core.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="26" column="39" lean-forward="true" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

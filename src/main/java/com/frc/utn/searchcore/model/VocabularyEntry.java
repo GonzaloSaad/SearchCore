@@ -38,10 +38,6 @@ public class VocabularyEntry implements Serializable {
         TF++;
     }
 
-    public void addDocumentAppearance() {
-        Nr++;
-    }
-
     public int getTF() {
         return TF;
     }

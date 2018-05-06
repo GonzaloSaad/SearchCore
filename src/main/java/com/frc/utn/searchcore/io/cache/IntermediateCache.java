@@ -35,20 +35,26 @@ public class IntermediateCache extends Cache {
     }
 
     @Override
-    public void dump() {
-        mergePostPacks();
+    public void dump(boolean parallel) {
+        mergePostPacks(parallel);
         clean();
     }
 
-    private void mergePostPacks() {
-        new PersistentThread(getCache()).start();
+    private void mergePostPacks(boolean parallel) {
+
+        Runnable job = new PersistentJob(getCache());
+        if (parallel){
+            new Thread(job).start();
+        } else {
+            job.run();
+        }
     }
 
-    private class PersistentThread extends Thread {
+    private class PersistentJob implements Runnable {
 
         private CachedPostPack[] threadCache;
 
-        public PersistentThread(CachedPostPack[] cache) {
+        public PersistentJob(CachedPostPack[] cache) {
             threadCache = cache;
         }
 

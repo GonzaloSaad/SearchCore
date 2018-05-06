@@ -23,7 +23,7 @@ public abstract class Cache {
 
     public abstract Map<String, PostEntry> putPostPack(Map<String, PostEntry> postPack, int file);
 
-    public abstract void dump();
+    public abstract void dump(boolean parallel);
 
     protected CachedPostPack[] getCache() {
         return cache;

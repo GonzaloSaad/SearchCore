@@ -30,6 +30,7 @@ public class SearchCache extends Cache {
         cacheMap[file] = false;
     }
 
+    @Override
     public Map<String, PostEntry> getPostPack(int file) {
         CachedPostPack cpp;
         CachedPostPack spp;
@@ -79,11 +80,13 @@ public class SearchCache extends Cache {
         } while (true);
     }
 
+    @Override
     public Map<String, PostEntry> putPostPack(Map<String, PostEntry> postPack, int file) {
         throw new UnsupportedOperationException("Search Cache cant add files.");
     }
 
-    public void dump() {
+    @Override
+    public void dump(boolean parallel) {
         clean();
     }
 }

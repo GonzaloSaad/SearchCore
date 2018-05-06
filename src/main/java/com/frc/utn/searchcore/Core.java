@@ -5,9 +5,7 @@
  */
 package com.frc.utn.searchcore;
 
-import com.frc.utn.searchcore.model.PostEntry;
-import com.uttesh.exude.ExudeData;
-import com.uttesh.exude.exception.InvalidDataException;
+
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -21,18 +19,8 @@ import java.util.logging.Logger;
  */
 public class Core {
     public static void main(String[] args) {
-        String path = "C:\\Users\\Gonzalo\\Desktop\\threadTest";
+        String path = "C:\\Users\\Gonzalo\\Desktop\\lightTest";
         
-        /*InputStream stream = Core.class.getResourceAsStream("/logging.properties");
-        System.out.println(stream);*/
-        
-        /* PostEntry[] d = new PostEntry[10];
-
-
-        for (PostEntry dou: d){
-            System.out.println(dou);
-        }*/
-
 
         try {
             InputStream stream = Core.class.getResourceAsStream("/logging.properties");

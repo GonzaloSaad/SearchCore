@@ -94,23 +94,72 @@ public class IndexHelper {
         return postPack;
     }
 
-    public void commit() {
+    public void commit(boolean parallel) {
         logger.log(Level.INFO, "Saving indexes and cache to storage.");
-        cache.dump();
+        cache.dump(parallel);
         EngineModel.getInstance().commit();
     }
 
+    public void commit() {
+        commit(true);
+    }
+
     public void finishIndexing() {
+
+        commit(false);
         logger.log(Level.INFO, "Finalize indexing...");
 
-        cache.dump();
-        for (int i = 0; i < DLCConstants.POST_FILES; i++) {
-            Map<String,PostEntry> postPack = PostPackManagement.getInstance().getPostPack(i);
-            if (postPack != null){
-                throw new RuntimeException("The model was not consistent.");
-            }
+        Runnable job1 = new UpdatingNrJob(0, DLCConstants.POST_FILES / 2);
+        Runnable job2 = new UpdatingNrJob(DLCConstants.POST_FILES / 2, DLCConstants.POST_FILES);
+
+
+        Thread thread = new Thread(job1);
+        thread.start();
+
+        job2.run();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
+        logger.log(Level.INFO, "Done.");
+
+    }
+
+    private class UpdatingNrJob implements Runnable {
+        private int start;
+        private int end;
+
+
+        public UpdatingNrJob(int start, int end) {
+            this.start = start;
+            this.end = end;
+        }
+
+        @Override
+        public void run() {
+            doUpdate();
+
+        }
+
+        public void doUpdate() {
+            for (int i = start; i < end; i++) {
+                Map<String, PostEntry> postPack = PostPackManagement.getInstance().getPostPack(i);
+                if (postPack == null) {
+                    throw new RuntimeException("The model was not consistent.");
+                }
+
+                for (String term : postPack.keySet()) {
+                    VocabularyEntry ve = EngineModel.getInstance().getFromVocabulary(term);
+                    if (ve == null) {
+                        throw new RuntimeException("The model was not consistent.");
+                    }
+                    ve.updateNrValue(postPack.get(term));
+                }
+
+            }
+        }
     }
 
 

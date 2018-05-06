@@ -81,6 +81,7 @@ public class SearchEngineController {
         }
         logger.log(Level.INFO, "Terms red [{0}].", indexedTerms);
         indexHelper.finishIndexing();
+        /*searchHelper.update();*/
 
     }
 
