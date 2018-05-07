@@ -8,7 +8,7 @@ package com.frc.utn.searchcore;
 import com.frc.utn.searchcore.io.management.PostPackManagement;
 import com.frc.utn.searchcore.io.cache.Cache;
 import com.frc.utn.searchcore.io.cache.IntermediateCache;
-import com.frc.utn.searchcore.model.PostEntry;
+import com.frc.utn.searchcore.model.PostList;
 import com.frc.utn.searchcore.model.VocabularyEntry;
 
 import java.io.File;
@@ -41,22 +41,28 @@ public class IndexHelper {
         return EngineModel.getInstance().getDocMap().size();
     }
 
-    public PostEntry getPostEntry(String term) {
-        PostEntry pe = null;
+    public PostList getPostList(VocabularyEntry ve) {
 
-        int file = EngineModel.getInstance().getFromVocabulary(term).getPostFile();
+        if (ve==null){
+            return null;
+        }
 
-        Map<String, PostEntry> postPack = getPostPack(file);
+        PostList pl = null;
+
+        String term = ve.getTerm();
+        int file = ve.getPostFile();
+
+        Map<String, PostList> postPack = getPostPack(file);
 
         if (postPack != null) {
-            pe = postPack.get(term);
-            if (pe == null) {
-                pe = new PostEntry(term);
-                postPack.put(term, pe);
+            pl = postPack.get(term);
+            if (pl == null) {
+                pl = new PostList(term);
+                postPack.put(term, pl);
             }
         }
 
-        return pe;
+        return pl;
     }
 
     public VocabularyEntry getVocabularyEntryForTerm(String term) {
@@ -84,8 +90,8 @@ public class IndexHelper {
         return docID;
     }
 
-    private Map<String, PostEntry> getPostPack(int file) {
-        Map<String, PostEntry> postPack = cache.getPostPack(file);
+    private Map<String, PostList> getPostPack(int file) {
+        Map<String, PostList> postPack = cache.getPostPack(file);
 
         if (postPack == null) {
             postPack = new HashMap<>();
@@ -122,7 +128,7 @@ public class IndexHelper {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        EngineModel.getInstance().commit();
         logger.log(Level.INFO, "Done.");
 
     }
@@ -145,7 +151,7 @@ public class IndexHelper {
 
         public void doUpdate() {
             for (int i = start; i < end; i++) {
-                Map<String, PostEntry> postPack = PostPackManagement.getInstance().getPostPack(i);
+                Map<String, PostList> postPack = PostPackManagement.getInstance().getPostPack(i);
                 if (postPack == null) {
                     throw new RuntimeException("The model was not consistent.");
                 }

@@ -15,13 +15,13 @@ import java.util.TreeSet;
 /**
  * @author Gonzalo
  */
-public class PostEntry implements Serializable {
+public class PostList implements Serializable {
 
     private final String TERM;
 
     private final Map<Integer, Integer> DOC_HASH_MAP;
 
-    public PostEntry(String term) {
+    public PostList(String term) {
         TERM = term;
         DOC_HASH_MAP = new HashMap<>();
     }
@@ -66,7 +66,7 @@ public class PostEntry implements Serializable {
         getMap().put(docID, occurance);
     }
 
-    public void mergePostEntry(PostEntry otherPE) {
+    public void mergePostEntry(PostList otherPE) {
         Map<Integer, Integer> otherMap = otherPE.getMap();
 
         for (int docId : otherMap.keySet()) {
@@ -81,71 +81,22 @@ public class PostEntry implements Serializable {
         }
     }
 
-    public Set<PostItem> getListOfDocument() {
-        Set<PostItem> set = new TreeSet<>(new PostItemComparator());
+    public Set<PostListItem> getListOfDocument() {
+        Set<PostListItem> set = new TreeSet<>(new PostItemComparator());
 
         for (Integer l : getMap().keySet()) {
-            PostItem pi = new PostItem(l, getMap().get(l));
+            PostListItem pi = new PostListItem(l, getMap().get(l));
             set.add(pi);
         }
         return set;
     }
 
-    private class PostItem implements Serializable, Comparable<PostItem> {
 
-        private final int DOC_ID;
-        private int TF;
 
-        public PostItem(int id, int tf) {
-            this.DOC_ID = id;
-            this.TF = tf;
-        }
-
-        public long getDocID() {
-            return DOC_ID;
-        }
-
-        public int getTf() {
-            return TF;
-        }
-
-        public void addOccurance() {
-            TF++;
-        }
+    private class PostItemComparator implements Comparator<PostListItem> {
 
         @Override
-        public int compareTo(PostItem t) {
-            return (getTf() - t.getTf())<0? -1 : 1;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj) {
-                return true;
-            }
-            if (obj == null) {
-                return false;
-            }
-            if (getClass() != obj.getClass()) {
-                return false;
-            }
-            final PostItem other = (PostItem) obj;
-            return this.DOC_ID == other.DOC_ID;
-        }
-
-        @Override
-        public int hashCode() {
-            int hash = 7;
-            hash = 19 * hash + (int) (this.DOC_ID ^ (this.DOC_ID >>> 32));
-            return hash;
-        }
-
-    }
-
-    private class PostItemComparator implements Comparator<PostItem> {
-
-        @Override
-        public int compare(PostItem t, PostItem t1) {
+        public int compare(PostListItem t, PostListItem t1) {
             return t.compareTo(t1);
         }
 

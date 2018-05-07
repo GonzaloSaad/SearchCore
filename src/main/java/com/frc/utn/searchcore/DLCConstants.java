@@ -6,5 +6,6 @@ public class DLCConstants {
     public static final double FILES_CACHED_PROP = 0.1;
     public static final int SEARCH_CACHE_SIZE = (int) (POST_FILES * FILES_CACHED_PROP);
     public static final int INDEX_CACHE_SIZE = POST_FILES;
+    public static final int R = 15;
 
 }

@@ -19,7 +19,8 @@ import java.util.logging.Logger;
  */
 public class Core {
     public static void main(String[] args) {
-        String path = "C:\\Users\\Gonzalo\\Desktop\\lightTest";
+        String path = "C:\\Users\\Gonzalo\\Desktop\\t1";
+        String query = "This etext was prepared by the PG Shakespeare Team, a team of about twenty Project Gutenberg volunteers.";
         
 
         try {
@@ -28,6 +29,8 @@ public class Core {
             LogManager.getLogManager().readConfiguration(stream);
             SearchEngineController controller = new SearchEngineController();
             controller.indexFolder(path);
+            controller.getDocumentsForQuery(query);
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Core.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException | SecurityException ex) {

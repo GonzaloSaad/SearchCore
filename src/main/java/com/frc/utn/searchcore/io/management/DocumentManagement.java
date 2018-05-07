@@ -7,7 +7,7 @@ package com.frc.utn.searchcore.io.management;
 
 import com.frc.utn.searchcore.io.util.DLCObjectReader;
 import com.frc.utn.searchcore.io.util.DLCObjectWriter;
-import com.frc.utn.searchcore.model.DocumentResult;
+import com.frc.utn.searchcore.model.Document;
 import org.apache.commons.lang.StringUtils;
 
 
@@ -31,13 +31,13 @@ public class DocumentManagement {
         return instance;
     }
 
-    public DocumentResult getDocument(int docId) {
-        DLCObjectReader<DocumentResult> or = new DLCObjectReader<>();
+    public Document getDocument(int docId) {
+        DLCObjectReader<Document> or = new DLCObjectReader<>();
         return or.read(createPath(docId));
     }
 
-    public void saveDocument(DocumentResult doc) {
-        DLCObjectWriter<DocumentResult> ow = new DLCObjectWriter<>();
+    public void saveDocument(Document doc) {
+        DLCObjectWriter<Document> ow = new DLCObjectWriter<>();
         ow.write(doc, createPath(doc.getDocID()));
     }
 

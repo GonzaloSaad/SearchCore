@@ -4,10 +4,9 @@ import com.frc.utn.searchcore.io.management.DocumentManagement;
 import com.frc.utn.searchcore.io.management.DocumentMapManagement;
 import com.frc.utn.searchcore.io.management.InternalFoldersManagement;
 import com.frc.utn.searchcore.io.management.VocabularyManagement;
-import com.frc.utn.searchcore.model.DocumentResult;
+import com.frc.utn.searchcore.model.Document;
 import com.frc.utn.searchcore.model.VocabularyEntry;
 
-import javax.swing.*;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -92,10 +91,10 @@ public class EngineModel {
 
     private class DocumentPersistingThread extends Thread {
 
-        DocumentResult doc;
+        Document doc;
 
         public DocumentPersistingThread(File file, int docID) {
-            doc = new DocumentResult(file, docID);
+            doc = new Document(file, docID);
 
         }
 

@@ -12,19 +12,18 @@ import java.io.Serializable;
  *
  * @author gonzalo.saad
  */
-public class DocumentResult implements Serializable {
+public class Document implements Serializable {
     private final int docID;
     private final String name;
     private final String url;
-    private transient double value = 0;
 
-    public DocumentResult(String name, String url, int docID) {
+    public Document(String name, String url, int docID) {
         this.name = name;
         this.url = url;
         this.docID = docID;
     }
 
-    public DocumentResult(File file, int docID){
+    public Document(File file, int docID){
         this(file.getName(),file.getAbsolutePath(),docID);
     }
 

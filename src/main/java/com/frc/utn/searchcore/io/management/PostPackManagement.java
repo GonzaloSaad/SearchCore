@@ -3,7 +3,7 @@ package com.frc.utn.searchcore.io.management;
 
 import com.frc.utn.searchcore.io.util.DLCObjectReader;
 import com.frc.utn.searchcore.io.util.DLCObjectWriter;
-import com.frc.utn.searchcore.model.PostEntry;
+import com.frc.utn.searchcore.model.PostList;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.Map;
@@ -27,13 +27,13 @@ public class PostPackManagement{
         return instancePck;
     }
 
-    public Map<String,PostEntry> getPostPack(int postNumber){
-        DLCObjectReader<Map<String,PostEntry>> or = new DLCObjectReader<>();
+    public Map<String,PostList> getPostPack(int postNumber){
+        DLCObjectReader<Map<String,PostList>> or = new DLCObjectReader<>();
         return or.read(createPath(postNumber));
     }
 
-    public void savePostPack(Map<String,PostEntry> postPack,int postNumber){
-        DLCObjectWriter<Map<String,PostEntry>> ow = new DLCObjectWriter<>();
+    public void savePostPack(Map<String,PostList> postPack, int postNumber){
+        DLCObjectWriter<Map<String,PostList>> ow = new DLCObjectWriter<>();
         ow.write(postPack, createPath(postNumber));
     }
 

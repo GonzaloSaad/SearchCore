@@ -1,7 +1,7 @@
 package com.frc.utn.searchcore.io.cache;
 
 
-import com.frc.utn.searchcore.model.PostEntry;
+import com.frc.utn.searchcore.model.PostList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +19,9 @@ public abstract class Cache {
         sizeOfCache = size;
     }
 
-    public abstract Map<String, PostEntry> getPostPack(int file);
+    public abstract Map<String, PostList> getPostPack(int file);
 
-    public abstract Map<String, PostEntry> putPostPack(Map<String, PostEntry> postPack, int file);
+    public abstract Map<String, PostList> putPostPack(Map<String, PostList> postPack, int file);
 
     public abstract void dump(boolean parallel);
 
@@ -33,17 +33,17 @@ public abstract class Cache {
         return cache[index];
     }
 
-    protected void set(CachedPostPack c) {
-        cache[c.getFile()] = c;
+    protected void set(CachedPostPack c, int index) {
+        cache[index] = c;
     }
 
     public void clean() {
         cache = new CachedPostPack[sizeOfCache];
     }
 
-    public List<Map<String, PostEntry>> getCachedPost() {
+    public List<Map<String, PostList>> getCachedPost() {
 
-        List<Map<String, PostEntry>> list = new ArrayList<>();
+        List<Map<String, PostList>> list = new ArrayList<>();
 
         for (CachedPostPack c : cache) {
             if (c != null) {

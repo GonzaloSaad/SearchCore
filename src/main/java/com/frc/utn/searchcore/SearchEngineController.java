@@ -7,8 +7,8 @@ package com.frc.utn.searchcore;
 
 import com.frc.utn.searchcore.files.FileParser;
 import com.frc.utn.searchcore.files.FolderFileList;
-import com.frc.utn.searchcore.model.DocumentResult;
-import com.frc.utn.searchcore.model.PostEntry;
+import com.frc.utn.searchcore.model.Document;
+import com.frc.utn.searchcore.model.PostList;
 import com.frc.utn.searchcore.model.VocabularyEntry;
 import com.uttesh.exude.ExudeData;
 import com.uttesh.exude.exception.InvalidDataException;
@@ -32,6 +32,10 @@ public class SearchEngineController {
 
     }
 
+    public List<Document> getDocumentsForQuery(String query){
+       return searchHelper.handle(query);
+    }
+
     public void indexFolder(String path)  {
         logger.log(Level.INFO, "Starting indexing.");
 
@@ -53,7 +57,7 @@ public class SearchEngineController {
 
             Integer docID = indexHelper.getDocumentID(f);
 
-            String text = readAndCleanStopWords(f);
+            String text = read(f);
             FileParser fp = new FileParser(text);
 
             for (String term : fp) {
@@ -67,10 +71,10 @@ public class SearchEngineController {
                     }
 
                     VocabularyEntry ve = indexHelper.getVocabularyEntryForTerm(term);
-                    PostEntry pe = indexHelper.getPostEntry(term);
+                    PostList pl = indexHelper.getPostList(ve);
 
                     ve.addTermOcurrance();
-                    pe.addDocument(docID);
+                    pl.addDocument(docID);
 
                 }
             }
@@ -83,17 +87,6 @@ public class SearchEngineController {
         indexHelper.finishIndexing();
         /*searchHelper.update();*/
 
-    }
-
-    private String readAndCleanStopWords(File file) {
-        String text = "";
-
-        try {
-            text = ExudeData.getInstance().filterStoppingsKeepDuplicates(FileUtils.readFileToString(file));
-        } catch (IOException | InvalidDataException e) {
-            logger.log(Level.SEVERE, e.getMessage(), e);
-        }
-        return text;
     }
 
     private String read(File file) {
@@ -109,10 +102,6 @@ public class SearchEngineController {
     }
 
 
-
-    public List<DocumentResult> getDocumentsForQuery(String query){
-        return null;
-    }
 
 
 }

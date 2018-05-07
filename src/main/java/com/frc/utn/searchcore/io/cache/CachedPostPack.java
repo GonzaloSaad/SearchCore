@@ -1,15 +1,15 @@
 package com.frc.utn.searchcore.io.cache;
 
-import com.frc.utn.searchcore.model.PostEntry;
+import com.frc.utn.searchcore.model.PostList;
 
 import java.util.Map;
 
 public class CachedPostPack {
     private int file;
-    private Map<String, PostEntry> postPack;
+    private Map<String, PostList> postPack;
     private boolean used = true;
 
-    public CachedPostPack(int file, Map<String, PostEntry> postPack) {
+    public CachedPostPack(int file, Map<String, PostList> postPack) {
         this.file = file;
         this.postPack = postPack;
 
@@ -19,7 +19,7 @@ public class CachedPostPack {
         return file;
     }
 
-    public Map<String, PostEntry> getPostPack() {
+    public Map<String, PostList> getPostPack() {
         return postPack;
     }
 

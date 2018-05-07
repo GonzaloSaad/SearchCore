@@ -2,64 +2,61 @@ package com.frc.utn.searchcore.io.cache;
 
 import com.frc.utn.searchcore.DLCConstants;
 import com.frc.utn.searchcore.io.management.PostPackManagement;
-import com.frc.utn.searchcore.model.PostEntry;
+import com.frc.utn.searchcore.model.PostList;
+
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 public class SearchCache extends Cache {
 
     private int pointer;
-    private boolean[] cacheMap;
+    private Map<Integer, Integer> cacheMap;
 
     public SearchCache(int size) {
         super(size);
-        cacheMap = new boolean[DLCConstants.INDEX_CACHE_SIZE];
+        cacheMap = new HashMap<>();
         pointer = 0;
-        Arrays.fill(cacheMap, false);
-    }
-
-    private boolean isCached(int file) {
-        return cacheMap[file];
-    }
-
-    private void setInCache(int file){
-        cacheMap[file] = true;
-    }
-
-    private void setOutOfCache(int file){
-        cacheMap[file] = false;
     }
 
     @Override
-    public Map<String, PostEntry> getPostPack(int file) {
-        CachedPostPack cpp;
-        CachedPostPack spp;
+    public Map<String, PostList> getPostPack(int file) {
+        CachedPostPack cachedPostPack;
+        CachedPostPack storedPostPack;
 
-        if (isCached(file)) {
-            cpp = get(file);
-            cpp.markUsed();
-            return cpp.getPostPack();
+        Integer indexOfCache = cacheMap.get(file);
+
+        if (indexOfCache != null) {
+            cachedPostPack = get(indexOfCache);
+            cachedPostPack.markUsed();
+            return cachedPostPack.getPostPack();
         }
 
-        spp = getPostPackFromStorage(file);
-        int index = getLessUsedPostPackIndex();
 
-        if (get(index) != null){
-            setOutOfCache(get(index).getFile());
+        int indexOfLessUsedCache = getLessUsedPostPackIndex();
+
+
+        cachedPostPack = get(indexOfLessUsedCache);
+        if (cachedPostPack !=null) {
+            cacheMap.put(cachedPostPack.getFile(), null);
         }
 
-        set(spp);
-        setInCache(file);
-        return spp.getPostPack();
+        storedPostPack = getPostPackFromStorage(file);
+        set(storedPostPack, indexOfLessUsedCache);
+        cacheMap.put(storedPostPack.getFile(), indexOfLessUsedCache);
+
+
+
+        return storedPostPack.getPostPack();
     }
 
     private CachedPostPack getPostPackFromStorage(int file) {
-        Map<String, PostEntry> postPack = PostPackManagement.getInstance().getPostPack(file);
-        if (postPack == null){
+        Map<String, PostList> postPack = PostPackManagement.getInstance().getPostPack(file);
+        if (postPack == null) {
             throw new IllegalStateException("The file was not found! Inconsistency in the model!");
         }
 
-        return new CachedPostPack(file,postPack);
+        return new CachedPostPack(file, postPack);
     }
 
     public int getLessUsedPostPackIndex() {
@@ -81,13 +78,23 @@ public class SearchCache extends Cache {
     }
 
     @Override
-    public Map<String, PostEntry> putPostPack(Map<String, PostEntry> postPack, int file) {
+    public Map<String, PostList> putPostPack(Map<String, PostList> postPack, int file) {
         throw new UnsupportedOperationException("Search Cache cant add files.");
     }
 
     @Override
     public void dump(boolean parallel) {
         clean();
+    }
+
+    public double occupacy() {
+        int cached = 0;
+        for (CachedPostPack c : getCache()) {
+            if (c != null) {
+                cached++;
+            }
+        }
+        return (double) cached / (double) size();
     }
 }
 

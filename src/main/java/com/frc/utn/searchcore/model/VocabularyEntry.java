@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author Gonzalo
  */
-public class VocabularyEntry implements Serializable {
+public class VocabularyEntry implements Serializable, Comparable<VocabularyEntry> {
 
     private final String TERM;
     private final int POST_FILE;
@@ -46,8 +46,12 @@ public class VocabularyEntry implements Serializable {
         return Nr;
     }
 
-    public void updateNrValue(PostEntry postEntry){
-        this.Nr = postEntry.getNr();
+    public void updateNrValue(PostList postList){
+        this.Nr = postList.getNr();
     }
 
+    @Override
+    public int compareTo(VocabularyEntry otherEntry) {
+        return (this.getNr()< otherEntry.getNr()? -1 : 1);
+    }
 }
