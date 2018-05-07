@@ -3,10 +3,13 @@ package com.frc.utn.searchcore.io.cache;
 import com.frc.utn.searchcore.io.management.PostPackManagement;
 import com.frc.utn.searchcore.model.PostList;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class IntermediateCache extends Cache {
 
     Thread persistingThread = new Thread();
+    private static final Logger logger = Logger.getLogger(IntermediateCache.class.getName());
 
     public IntermediateCache(int size) {
         super(size);
@@ -45,10 +48,13 @@ public class IntermediateCache extends Cache {
     private void mergePostPacks(boolean parallel) {
 
         try {
+            logger.log(Level.INFO,"Waiting for persisting thread to finish. Status [{0}].",persistingThread.getState());
             persistingThread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
+            logger.log(Level.INFO,"Problem with thread.");
         }
+        logger.log(Level.INFO,"Thread finished ok.");
 
 
         Runnable job = new PersistentJob(getCache());
