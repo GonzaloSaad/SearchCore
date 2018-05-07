@@ -6,15 +6,17 @@
 package com.frc.utn.searchcore.model;
 
 import java.io.File;
+import java.io.Serializable;
 
 /**
  *
  * @author gonzalo.saad
  */
-public class DocumentResult {
+public class DocumentResult implements Serializable {
     private final int docID;
     private final String name;
     private final String url;
+    private transient double value = 0;
 
     public DocumentResult(String name, String url, int docID) {
         this.name = name;
