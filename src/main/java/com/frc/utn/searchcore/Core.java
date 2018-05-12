@@ -7,9 +7,11 @@ package com.frc.utn.searchcore;
 
 
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+
+
+import java.io.*;
+
+import java.security.GeneralSecurityException;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
@@ -21,20 +23,23 @@ public class Core {
     public static void main(String[] args) {
         String path = "C:\\Users\\Gonzalo\\Desktop\\t2";
         String query = "This etext was prepared by the PG Shakespeare Team, a team of about twenty Project Gutenberg volunteers.";
-        
+        String folderUID = "0B_R7SeoAotsmUUtYendIX04zRjA";
+
+
+
 
         try {
             InputStream stream = Core.class.getResourceAsStream("/logging.properties");
             System.out.println(stream);
             LogManager.getLogManager().readConfiguration(stream);
             SearchEngineController controller = new SearchEngineController();
-            //controller.indexFolder(path);
+            //controller.indexFolder(folderUID);
             controller.getDocumentsForQuery(query);
 
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Core.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException | SecurityException ex) {
             Logger.getLogger(Core.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }/* catch (GeneralSecurityException e) {
+            e.printStackTrace();
+        }*/
     }
 }

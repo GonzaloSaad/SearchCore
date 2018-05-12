@@ -38,7 +38,7 @@ public class DocumentManagement {
 
     public void saveDocument(Document doc) {
         DLCObjectWriter<Document> ow = new DLCObjectWriter<>();
-        ow.write(doc, createPath(doc.getDocID()));
+        ow.write(doc, createPath(doc.getDLCID()));
     }
 
     private String createPath(int docId) {

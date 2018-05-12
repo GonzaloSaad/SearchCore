@@ -13,32 +13,42 @@ import java.io.Serializable;
  * @author gonzalo.saad
  */
 public class Document implements Serializable {
-    private final int docID;
+    private final String ID;
     private final String name;
-    private final String url;
+    private final String downloadLink;
+    private final String viewLink;
+    private int DLCID;
 
-    public Document(String name, String url, int docID) {
+    public Document(String ID, String name, String downloadLink, String viewLink, int id) {
+        this.ID = ID;
         this.name = name;
-        this.url = url;
-        this.docID = docID;
+        this.downloadLink = downloadLink;
+        this.viewLink = viewLink;
+        this.DLCID = id;
     }
 
-    public Document(File file, int docID){
-        this(file.getName(),file.getAbsolutePath(),docID);
-    }
-
-    public int getDocID() {
-        return docID;
+    public String getID() {
+        return ID;
     }
 
     public String getName() {
         return name;
     }
 
-
-    public String getUrl() {
-        return url;
+    public String getDownloadLink() {
+        return downloadLink;
     }
-    
+
+    public String getViewLink() {
+        return viewLink;
+    }
+
+    public int getDLCID() {
+        return DLCID;
+    }
+
+    public void setDLCID(int DLCID) {
+        this.DLCID = DLCID;
+    }
     
 }

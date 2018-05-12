@@ -6,15 +6,15 @@
 package com.frc.utn.searchcore;
 
 import com.frc.utn.searchcore.files.FileParser;
-import com.frc.utn.searchcore.files.FolderFileList;
+import com.frc.utn.searchcore.googledrive.GoogleDriveDowloader;
+import com.frc.utn.searchcore.googledrive.GoogleDriveFileList;
 import com.frc.utn.searchcore.model.Document;
 import com.frc.utn.searchcore.model.PostList;
 import com.frc.utn.searchcore.model.VocabularyEntry;
-import com.uttesh.exude.ExudeData;
-import com.uttesh.exude.exception.InvalidDataException;
+import com.google.api.services.drive.model.File;
 import org.apache.commons.io.FileUtils;
-import java.io.File;
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,7 +36,7 @@ public class SearchEngineController {
        return searchHelper.handle(query);
     }
 
-    public void indexFolder(String path)  {
+    public void indexFolder(String folderUID) throws IOException, GeneralSecurityException {
         logger.log(Level.INFO, "Starting indexing.");
 
         IndexHelper indexHelper = new IndexHelper();
@@ -44,10 +44,10 @@ public class SearchEngineController {
         int indexedTerms = 0;
         long sizeOfIndexed = 0;
 
-        FolderFileList fl = new FolderFileList(path);
+        GoogleDriveFileList drive = new GoogleDriveFileList(folderUID);
 
-        for (File f : fl) {
-            long sizeOfFile = f.length()/1000;
+        for (File f : drive) {
+            long sizeOfFile = 0;
             sizeOfIndexed += sizeOfFile;
             logger.log(Level.INFO, "Document to ingest: [{0}] \tSize: {1}KB\tTotal: {2}KB.", new Object[]{f.getName(), sizeOfFile,sizeOfIndexed});
 
@@ -89,16 +89,8 @@ public class SearchEngineController {
 
     }
 
-    private String read(File file) {
-        String text = "";
-
-        try {
-            text = FileUtils.readFileToString(file);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return text;
+    private String read(File file) throws IOException {
+        return GoogleDriveDowloader.download(file);
     }
 
 

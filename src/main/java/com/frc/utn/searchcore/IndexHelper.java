@@ -10,8 +10,8 @@ import com.frc.utn.searchcore.io.cache.Cache;
 import com.frc.utn.searchcore.io.cache.IntermediateCache;
 import com.frc.utn.searchcore.model.PostList;
 import com.frc.utn.searchcore.model.VocabularyEntry;
+import com.google.api.services.drive.model.File;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
